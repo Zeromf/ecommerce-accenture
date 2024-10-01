@@ -17,7 +17,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
-@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping("/api/product")
 @Tag(name = "Product API", description = "API to manage Products")
@@ -33,16 +32,8 @@ public class ProductController {
             @ApiResponse(responseCode = "409", description = "Conflicto, el producto ya existe.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiError.class)))
     })
     public ResponseEntity<?> createProduct(@RequestBody ProductRequest request) {
-        try {
-            ProductResponse productResponse = productService.createProduct(request);
-            return new ResponseEntity<>(productResponse, HttpStatus.CREATED);
-        } catch (BadRequestException ex) {
-            return ResponseEntity.badRequest().body(new ApiError(ex.getMessage()));
-        } catch (ProductAlreadyExistsException ex) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(new ApiError(ex.getMessage()));
-        } catch (Exception ex) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ApiError("Error interno del servidor"));
-        }
+        ProductResponse productResponse = productService.createProduct(request);
+        return new ResponseEntity<>(productResponse, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
