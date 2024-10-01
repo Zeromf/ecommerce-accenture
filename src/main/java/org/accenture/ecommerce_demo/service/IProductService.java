@@ -1,7 +1,7 @@
-package org.accenture.service;
+package org.accenture.ecommerce_demo.service;
 
-import org.accenture.model.ProductRequest;
-import org.accenture.model.ProductResponse;
+import org.accenture.ecommerce_demo.model.ProductRequest;
+import org.accenture.ecommerce_demo.model.ProductResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;

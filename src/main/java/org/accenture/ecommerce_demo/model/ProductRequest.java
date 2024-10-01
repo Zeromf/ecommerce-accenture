@@ -1,8 +1,6 @@
-package org.accenture.model;
+package org.accenture.ecommerce_demo.model;
 
 import lombok.Data;
-
-import java.math.BigDecimal;
 
 @Data
 public class ProductRequest {

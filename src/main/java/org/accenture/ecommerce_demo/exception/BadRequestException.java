@@ -1,6 +1,4 @@
-package org.accenture.exception;
-
-import lombok.Data;
+package org.accenture.ecommerce_demo.exception;
 
 public class BadRequestException extends RuntimeException {
     public BadRequestException(String message) {

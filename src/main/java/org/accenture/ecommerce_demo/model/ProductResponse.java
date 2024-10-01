@@ -1,4 +1,4 @@
-package org.accenture.model;
+package org.accenture.ecommerce_demo.model;
 
 import lombok.Data;
 

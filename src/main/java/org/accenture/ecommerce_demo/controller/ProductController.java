@@ -1,4 +1,4 @@
-package org.accenture.controller;
+package org.accenture.ecommerce_demo.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -6,20 +6,18 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.accenture.exception.*;
-import org.accenture.model.ProductRequest;
-import org.accenture.model.ProductResponse;
-import org.accenture.service.IProductService;
-import org.accenture.service.ProductServiceImpl;
+import org.accenture.ecommerce_demo.exception.*;
+import org.accenture.ecommerce_demo.service.IProductService;
+
+import org.accenture.ecommerce_demo.model.ProductRequest;
+import org.accenture.ecommerce_demo.model.ProductResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.UUID;
-
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping("/api/product")
 @Tag(name = "Product API", description = "API to manage Products")
@@ -27,7 +25,7 @@ public class ProductController {
     @Autowired
     private IProductService productService;
 
-    @PostMapping
+    @PostMapping("/products")
     @Operation(summary = "Crea un nuevo producto", description = "Permite la creación de un nuevo producto en el sistema.")
     @ApiResponses({
             @ApiResponse(responseCode = "201", description = "Producto creado con éxito", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProductResponse.class))),
